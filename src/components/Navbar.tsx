@@ -20,9 +20,18 @@ export const Navbar = () => {
     <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border shadow-sm">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <Link to="/" className="text-2xl font-display font-bold text-foreground">
-            RV Naturals
-          </Link>
+        <Link to="/" className="flex items-center gap-0">
+  <img
+    src="src/assets/RV-Logo.png"
+    alt="RV Naturals Logo"
+    className="h-10 w-auto brightness-125 contrast-125"
+  />
+  <span className="text-2xl font-display font-bold text-foreground">
+    RV Naturals
+  </span>
+</Link>
+
+
           
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
