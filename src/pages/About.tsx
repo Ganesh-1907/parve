@@ -27,7 +27,7 @@ const About = () => {
       {/* Hero Section */}
       <section className="gradient-hero py-20 px-4">
         <div className="container mx-auto text-center space-y-6 max-w-3xl">
-          <h1 className="text-5xl md:text-6xl font-display font-bold">About RV Naturals</h1>
+          <h1 className="text-5xl md:text-6xl font-display font-bold">About PARVE</h1>
           <p className="text-2xl text-muted-foreground">Nature-inspired beauty for everyone</p>
         </div>
       </section>
@@ -48,7 +48,7 @@ const About = () => {
                 <h2 className="text-3xl font-display font-bold mb-6">Our Story</h2>
                 <div className="space-y-4 text-muted-foreground">
                   <p>
-                    <span className="font-semibold text-primary">RV Naturals</span> was born from a simple belief: beauty should be natural, effective, and accessible to everyone. We create products using the finest plant-based ingredients, free from harmful chemicals.
+                    <span className="font-semibold text-primary">PARVE</span> was born from a simple belief: beauty should be natural, effective, and accessible to everyone. We create products using the finest plant-based ingredients, free from harmful chemicals.
                   </p>
                   <p>
                     Our journey began with a passion for harnessing nature's power to create skincare that truly works. Every formula is carefully crafted, tested, and perfected to deliver visible results while being gentle on your skin and the planet.

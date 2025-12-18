@@ -3,44 +3,41 @@ import { ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useCart } from "@/hooks/useCart";
-import logo from "@/assets/RV-Logo.png"
+import logo from "@/assets/RV-Logo.png";
 
 export const Navbar = () => {
   const location = useLocation();
   const { items } = useCart();
-  
+
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "Products", path: "/products" },
     { name: "About", path: "/about" },
   ];
-  
+
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
     <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border shadow-sm">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-        <Link to="/" className="flex items-center gap-0">
-  <img
-    src= {logo}
-    alt="RV Naturals Logo"
-    className="h-10 w-auto brightness-125 contrast-125"
-  />
-  <span className="text-2xl font-display font-bold text-foreground">
-    RV Naturals
-  </span>
-</Link>
+          <Link to="/" className="flex items-center gap-0">
+            <img
+              src={logo}
+              alt="RV Naturals Logo"
+              className="h-10 w-auto brightness-125 contrast-125"
+            />
+          </Link>
 
-
-          
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
                 className={`text-sm font-medium transition-colors hover:text-primary relative after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-primary after:transition-transform hover:after:scale-x-100 ${
-                  location.pathname === link.path ? "text-primary after:scale-x-100" : "text-foreground"
+                  location.pathname === link.path
+                    ? "text-primary after:scale-x-100"
+                    : "text-foreground"
                 }`}
               >
                 {link.name}
@@ -52,8 +49,8 @@ export const Navbar = () => {
             <Button variant="ghost" size="icon" className="relative">
               <ShoppingCart className="h-5 w-5" />
               {totalItems > 0 && (
-                <Badge 
-                  variant="destructive" 
+                <Badge
+                  variant="destructive"
                   className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 text-xs"
                 >
                   {totalItems}
@@ -62,7 +59,7 @@ export const Navbar = () => {
             </Button>
           </Link>
         </div>
-        
+
         {/* Mobile menu */}
         <div className="md:hidden flex items-center justify-center space-x-6 pb-3">
           {navLinks.map((link) => (
@@ -70,7 +67,9 @@ export const Navbar = () => {
               key={link.path}
               to={link.path}
               className={`text-sm font-medium transition-colors ${
-                location.pathname === link.path ? "text-primary" : "text-foreground"
+                location.pathname === link.path
+                  ? "text-primary"
+                  : "text-foreground"
               }`}
             >
               {link.name}

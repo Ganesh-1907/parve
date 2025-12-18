@@ -32,28 +32,67 @@ const Checkout = () => {
   }
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    try {
-      checkoutSchema.parse(formData);
-      setErrors({});
-      
-      toast.success("Order placed successfully! We'll contact you soon.");
-      clearCart();
-      navigate('/');
-    } catch (error) {
-      if (error instanceof z.ZodError) {
-        const newErrors: Record<string, string> = {};
-        error.errors.forEach((err) => {
-          if (err.path[0]) {
-            newErrors[err.path[0] as string] = err.message;
-          }
-        });
-        setErrors(newErrors);
-        toast.error("Please fix the errors in the form");
-      }
+  e.preventDefault();
+
+  try {
+    checkoutSchema.parse(formData);
+    setErrors({});
+
+    // 🔹 Build product message
+    const productDetails = items
+      .map(
+        (item, index) =>
+          `${index + 1}. ${item.name}\nQty: ${item.quantity}\nPrice: ₹${item.price * item.quantity}`
+      )
+      .join("\n\n");
+
+    // 🔹 Full WhatsApp message
+    const message = `
+🛍️ *New Order – PARVE*
+
+👤 Name: ${formData.name}
+📞 Phone: ${formData.phone}
+📍 Address: ${formData.address}
+
+🧾 *Order Details*
+${productDetails}
+
+💰 *Total Amount:* ₹${getTotalPrice().toFixed(2)}
+
+🚚 Shipping: Free
+`;
+
+    // 🔹 Encode message
+    const encodedMessage = encodeURIComponent(message);
+
+    // 🔹 WhatsApp number (India)
+    const whatsappNumber = "918341998599";
+
+    // 🔹 Open WhatsApp
+    window.open(
+      `https://wa.me/${whatsappNumber}?text=${encodedMessage}`,
+      "_blank"
+    );
+
+    toast.success("Redirecting to WhatsApp to place your order");
+
+    clearCart();
+    navigate("/");
+
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      const newErrors: Record<string, string> = {};
+      error.errors.forEach((err) => {
+        if (err.path[0]) {
+          newErrors[err.path[0] as string] = err.message;
+        }
+      });
+      setErrors(newErrors);
+      toast.error("Please fix the errors in the form");
     }
-  };
+  }
+};
+
 
   return (
     <div className="min-h-screen py-16 px-4">

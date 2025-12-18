@@ -58,7 +58,7 @@ const Index = () => {
         <div className="container mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6 animate-fade-in">
-              <Badge className="bg-primary/10 text-primary border-primary/20">
+              <Badge className="bg-primary text-primary-foreground">
                 <Sparkles className="w-3 h-3 mr-1" />
                 Featured Product
               </Badge>
@@ -117,7 +117,7 @@ const Index = () => {
           <div className="max-w-4xl mx-auto text-center space-y-6">
             <h2 className="text-4xl font-display font-bold">See The Difference</h2>
             <p className="text-xl text-muted-foreground">Watch how our products transform your skincare routine</p>
-            <div className="aspect-video bg-secondary rounded-3xl shadow-2xl overflow-hidden">
+            <div className="aspect-video bg-primary/10 rounded-3xl">
               <video 
                 controls 
                 className="w-full h-full object-cover"
@@ -142,7 +142,7 @@ const Index = () => {
               </p>
               <div className="grid grid-cols-2 gap-4">
                 {ingredients.map((ingredient, index) => (
-                  <Card key={index} className="border-l-4 border-primary">
+                  <Card key={index} className="border-l-4 border-primary bg-primary/5">
                     <CardContent className="p-4">
                       <h4 className="font-semibold">{ingredient.name}</h4>
                       <p className="text-sm text-muted-foreground">{ingredient.benefit}</p>
@@ -214,7 +214,7 @@ const Index = () => {
                     alt="Using Natural Serum"
                     className="w-full h-[500px] object-cover"
                   />
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-8">
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-8">
                     <h3 className="text-white text-2xl font-display font-bold mb-2">Radiance Boost Serum</h3>
                     <p className="text-white/90">Apply gently to clean skin for maximum absorption</p>
                   </div>
